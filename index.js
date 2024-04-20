@@ -4,7 +4,10 @@ const app = express();
 
 app.get("/:fname/:lname", (req, res) => {
   const { fname, lname } = req.params;
-  res.send("welcome " + fname + " " + lname);
+  const {address,phone} = req.query;
+  res.send("welcome " + fname + " " +
+   lname+"\nMy address is "+
+   address+" and phone no is "+ phone);
 });
 
 app.listen(3001);
