@@ -1,14 +1,10 @@
-const router=require("express").Router()
-const QRcode=require("../modules/qrcode")
-console.log(router)
-router.get("/",(req,res)=>{
-    res.send("hello")
+const router = require("express").Router();
+const apiRoutes=require("./routes.api")
+const uiRoutes=require("./routes.ui")
 
-})
-router.get("/qr",async (req,res)=>{
-const {qr}=req.query
-   const qrdata= await QRcode.toDataURL(qr);
-    res.send(`<img src=${qrdata}>`);
+console.log(router);
 
-})
-module.exports=router;
+router.use("/api/v1",apiRoutes);
+router.use("/",uiRoutes)
+
+module.exports = router;
